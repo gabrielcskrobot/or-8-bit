@@ -1,0 +1,8 @@
+{
+  "name": "Or8bit",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue",
+  "id": "d5f89161"
+}
