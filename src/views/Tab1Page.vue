@@ -7,21 +7,7 @@
         </ion-buttons>         
         <ion-title>Equipes</ion-title>
 
-        <ion-buttons slot="secondary">
-          <ion-button color="secondary" id="menu-button">
-            <ion-icon slot="icon-only" :icon="ellipsisVertical" :ios="ellipsisHorizontal" :md="ellipsisVertical"></ion-icon>
-          </ion-button>
-        </ion-buttons>        
 
-        <ion-popover trigger="menu-button" side="bottom" alignment="end">
-          <ion-content>
-            <ion-list>
-              <ion-item :button="true" :detail="false">
-                <ion-label>Loja</ion-label>
-              </ion-item>
-            </ion-list>
-          </ion-content>
-        </ion-popover>
       </ion-toolbar>
     </ion-header>
 
@@ -33,28 +19,90 @@
         </ion-toolbar>
       </ion-header>
      <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-      <ion-fab-button>
+      <ion-fab-button @click="setOpen(true)">
         <ion-icon :icon="add"></ion-icon>
       </ion-fab-button>
     </ion-fab>
       
-      <ExploreContainer name="" />
+  
+         <ion-list-header> Minhas Equipes</ion-list-header>
+      
+        <ion-item>
+          <ion-avatar slot="start">
+             <img src="../assets/avatar-finn.png" />
+          </ion-avatar>
+          <ion-label>
+            <h2>Finn</h2>
+            <h3>I'm a big deal</h3>
+            <p>Listen, I've had a pretty messed up day...</p>
+          </ion-label>
+        </ion-item>
+
+         <ion-item>
+          <ion-avatar slot="start">
+            <img src="../assets/avatar-han.png" />
+          </ion-avatar>
+          <ion-label>
+            <h2>Han</h2>
+            <h3>Look, kid...</h3>
+            <p>I've got enough on my plate as it i...</p>
+          </ion-label>
+        </ion-item>
+       <ion-list-header> Ranking Mundial</ion-list-header>
+        <ion-item>
+          <ion-avatar slot="start">
+            <img src="../assets/avatar-han.png" />
+          </ion-avatar>
+          <ion-label>
+            <h2>x</h2>
+            <h3>Look, kid...</h3>
+            <p>I've got enough on my plate as it i...</p>
+          </ion-label>
+        </ion-item>
     </ion-content>
+<ion-modal
+  :swipe-to-close="true"
+  :is-open="isOpenRef"
+  :presenting-element="$parent.$refs.ionRouterOutlet" 
+  trigger="trigger-button">
+    <ion-page>   
+    <ion-header>
+        <ion-toolbar color="primary">
+            <ion-buttons slot="start">
+                <ion-button @click="setOpen(false)">Voltar</ion-button>
+            </ion-buttons>
+            <ion-title>Configurações</ion-title>
+        </ion-toolbar>
+    </ion-header>    
+    <ion-content :fullscreen="true">
+      <!-- Conteudo aqui -->
+      Configurações
+    </ion-content>      
+ 
+  </ion-page>
+
+</ion-modal>
   </ion-page>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonIcon,} from '@ionic/vue';
-import { add } from 'ionicons/icons';
-import ExploreContainer from '@/components/ExploreContainer.vue';
+import { defineComponent, ref  } from 'vue';
+import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, IonModal , IonFabButton, IonButtons,  } from '@ionic/vue';
+import { add} from 'ionicons/icons';
 
 export default  defineComponent({
   name: 'Tab1Page',
-  components: { ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonIcon,},
+  components: {IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonIcon, IonModal , IonFabButton, IonButtons,  },
 
   setup() {
+    const isOpenRef = ref(false);
+    const setOpen = (state: boolean) => {
+      isOpenRef.value = state;
+      console.log('fechando');
+    };
     return {
+      isOpenRef, 
+      setOpen,
       add,
      }
     }

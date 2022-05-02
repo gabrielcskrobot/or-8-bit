@@ -6,6 +6,10 @@
           <ion-menu-button></ion-menu-button>
         </ion-buttons>         
         <ion-title>Campeonatos</ion-title>
+        <ion-chip slot="end" color="tertiary">
+        <ion-label> Orbs - 666 </ion-label>
+        <ion-icon :icon="close"></ion-icon>
+        </ion-chip>
         
       </ion-toolbar>
     </ion-header>
@@ -26,7 +30,7 @@
     </ion-card-header>
 
     <ion-card-content>
-      Campeonato Counter Strike
+      Campeonato Oficial de Counter Strike
     </ion-card-content>
   </ion-card>
 
